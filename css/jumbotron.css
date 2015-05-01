@@ -14,3 +14,10 @@ body {
 .gmnoprint img {
   max-width: none;
 }
+
+#input-map {
+  height: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
