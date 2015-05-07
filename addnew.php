@@ -17,10 +17,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/jumbotron.css" rel="stylesheet">
-
-  <!-- Bootstrap Form Helpers -->
-    <link href="css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
-
+  <link href="css/bootstrap-datepicker.css" rel="stylesheet">
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   <script src="js/ie-emulation-modes-warning.js"></script>
@@ -122,20 +119,25 @@
     <!-- Contact Form -->
     <?php
 
+
     // define variables and set to empty values
-    $tagnumber = $location = $email = $notes = "";
+    $tagnumber = $location = $date = $email = $notes = "";
     $emailErr = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $tagnumber = test_input($_POST["tagnumber"]);
       $location = test_input($_POST["location"]);
+      $date = test_input($_POST["date"]);
       $email = test_input($_POST["email"]);
       $notes = test_input($_POST["notes"]);
+
+      include 'processdata.php';
 
       $myfile = fopen("testfile.txt", "w") or die("Unable to open file!");;
       // test form
       fwrite($myfile, $tagnumber);
       fwrite($myfile, $location);
+      fwrite($myfile, $time);
       fwrite($myfile, $email);
       fwrite($myfile, $notes);
       fclose($myfile);
@@ -155,12 +157,14 @@
       <div class="col-md-8">
         <h3>Details</h3>
         <form name="reportTag" id="tagInfoDorm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+
           <div class="control-group form-group">
             <div class="controls">
               <label>Tag number:</label>
               <input name="tagnumber" type="text" class="form-control" id="tagnumber" required data-validation-required-message="Please enter the tag number.">
             </div>
           </div>
+
           <div class="control-group form-group">
             <div class="controls">
               <label for="location">Location:</label>
@@ -173,25 +177,28 @@
               </select>
             </div>
           </div>
+
           <div class="control-group form-group">
-            <div class="controls">
-              <label for="time">Time:</label>
-              <!-- <input type="datetime" class="form-control" id="time" required data-validation-required-message="Please choose the date you found the tag"> -->
-              <div name="time" class="bfh-datepicker" data-min="04/01/2015" data-max="today" data-close="false"></div>
+            <div class="controls" id="datepicker">
+              <label for="date">Date:</label>
+              <input name="date" type="text" class="form-control" data-provide="datepicker" required data-validation-required-message="Please choose the date you found the tag">
             </div>
           </div>
+
           <div class="control-group form-group">
             <div class="controls">
               <label>Email Address(Optional):</label>
               <input name="email" type="email" class="form-control" id="email">
             </div>
           </div>
+
           <div class="control-group form-group">
             <div class="controls">
               <label>Notes(Optional):</label>
               <textarea name="notes" rows="10" cols="100" class="form-control" id="message" maxlength="240" style="resize:none"></textarea>
             </div>
           </div>
+
           <div id="success"></div>
           <!-- For success/fail messages -->
           <button type="submit" class="btn btn-primary">Report Tag</button>
@@ -221,9 +228,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl9CSSyXgI9eM_M0Ocu2jH1SAd81vCJW4"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/kpmap-input.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/addnew.js"></script>
-  <!-- Bootstrap Form Helpers -->
-  <script src="js/bootstrap-formhelpers.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
 </body>
