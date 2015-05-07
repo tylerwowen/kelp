@@ -3,10 +3,10 @@
   google.maps.event.addDomListener(window, 'load', function() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: {
-        lat: 37.4,
-        lng: -119.509444
+        lat: 34.42,
+        lng: -119.845
       },
-      zoom: 6,
+      zoom: 9,
       scrollwheel: false,
       mapTypeId: google.maps.MapTypeId.TERRAIN
     });

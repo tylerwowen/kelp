@@ -17,9 +17,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/jumbotron.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap-datepicker.css" rel="stylesheet">
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   <script src="js/ie-emulation-modes-warning.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -64,9 +63,7 @@
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Report A New Found Tag
-          <small>Subheading</small>
-        </h1>
+        <h1 class="page-header">Report A New Found Tag</h1>
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a>
           </li>
@@ -116,47 +113,12 @@
     </div>
     <!-- /.row -->
 
-    <!-- Contact Form -->
-    <?php
+    <!-- Tag Report Form -->
 
-
-    // define variables and set to empty values
-    $tagnumber = $location = $date = $email = $notes = "";
-    $emailErr = "";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $tagnumber = test_input($_POST["tagnumber"]);
-      $location = test_input($_POST["location"]);
-      $date = test_input($_POST["date"]);
-      $email = test_input($_POST["email"]);
-      $notes = test_input($_POST["notes"]);
-
-      include 'processdata.php';
-
-      $myfile = fopen("testfile.txt", "w") or die("Unable to open file!");;
-      // test form
-      fwrite($myfile, $tagnumber);
-      fwrite($myfile, $location);
-      fwrite($myfile, $time);
-      fwrite($myfile, $email);
-      fwrite($myfile, $notes);
-      fclose($myfile);
-    }
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-
-    ?>
-
-    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <div class="row">
       <div class="col-md-8">
         <h3>Details</h3>
-        <form name="reportTag" id="tagInfoDorm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form name="reportTag" id="tagInfoDorm" action="processdata.php" method="post">
 
           <div class="control-group form-group">
             <div class="controls">
@@ -195,7 +157,13 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>Notes(Optional):</label>
-              <textarea name="notes" rows="10" cols="100" class="form-control" id="message" maxlength="240" style="resize:none"></textarea>
+              <textarea name="notes" rows="10" cols="100" class="form-control" id="notes" maxlength="240" style="resize:none"></textarea>
+            </div>
+          </div>
+
+          <div class="control-group form-group">
+            <div class="controls">
+              <input name="coordinates" class="form-control" id="coordinates" value="POINT(34.416 -119.845)" type="hidden"></input>
             </div>
           </div>
 
@@ -209,9 +177,7 @@
     <!-- /.row -->
 
 
-    </p>
   </div>
-
   <hr>
 
   <footer>
