@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $notes = test_input($_POST["notes"]);
   $coordinates = test_input($_POST["coordinates"]);
 
-  $myfile = fopen("testfile.txt", "w") or die("Unable to open file!");;
-  // test form
-  fwrite($myfile, $tagnumber);
-  fwrite($myfile, $location);
-  fwrite($myfile, $time);
-  fwrite($myfile, $email);
-  fwrite($myfile, $notes);
-  fclose($myfile);
+  // $myfile = fopen("testfile.txt", "w") or die("Unable to open file!");;
+  // // test form
+  // fwrite($myfile, $tagnumber);
+  // fwrite($myfile, $location);
+  // fwrite($myfile, $time);
+  // fwrite($myfile, $email);
+  // fwrite($myfile, $notes);
+  // fclose($myfile);
 }
 
 function test_input($data) {
@@ -47,8 +47,11 @@ try {
     VALUES ('$tagnumber', '$location', '$date', '$email', '$notes', GeomFromText('$coordinates'))";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "New record created successfully";
-    header("Location:index.html");
+    $message = "You have successfully reported a tag. Thank you for your cooperation!";
+    echo "<script type='text/javascript'>";
+    echo "alert('$message');";
+    echo "window.location.href = 'index.html';";
+    echo "</script>";
 }
 catch(PDOException $e)
     {

@@ -7,8 +7,8 @@
 })()
 
 function inputPosition(position) {
-  $("#coordinates").attr("value", 'POINT(' + position.coords.latitude +
-    ' ' + position.coords.longitude + ')' );
+  $("#coordinates").attr("value", 'POINT(' + position.coords.longitude +
+    ' ' + position.coords.latitude + ')' );
 }
 
 function showError(error) {

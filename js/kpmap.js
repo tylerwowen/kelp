@@ -6,7 +6,7 @@
         lat: 34.42,
         lng: -119.845
       },
-      zoom: 9,
+      zoom: 11,
       scrollwheel: false,
       mapTypeId: google.maps.MapTypeId.TERRAIN
     });

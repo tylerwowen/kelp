@@ -82,18 +82,19 @@
       </div>
       <!-- Contact Details Column -->
       <div class="col-md-4">
-        <h3>Contact Details</h3>
+        <h3>Contact</h3>
         <p>
-          3481 Melrose Place
-          <br>Beverly Hills, CA 90210
-          <br>
+          NSF Kelp Study
+          <br>Marine Science Institute
+          <br>University of California
+          <br>Santa Barbara, CA 93106
         </p>
         <p><i class="fa fa-phone"></i>
-          <abbr title="Phone">P</abbr>: (123) 456-7890</p>
+          <abbr title="Phone">P</abbr>: (805) 893-5303</p>
         <p><i class="fa fa-envelope-o"></i>
-          <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">name@example.com</a>
+          <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">kelp@eri.ucsb.edu</a>
         </p>
-        <p><i class="fa fa-clock-o"></i>
+        <!-- <p><i class="fa fa-clock-o"></i>
           <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
         <ul class="list-unstyled list-inline list-social-icons">
           <li>
@@ -108,7 +109,7 @@
           <li>
             <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
     <!-- /.row -->
@@ -123,7 +124,8 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>Tag number:</label>
-              <input name="tagnumber" type="text" class="form-control" id="tagnumber" required data-validation-required-message="Please enter the tag number.">
+              <input name="tagnumber" type="number" min="1000" max="3000" class="form-control" id="tagnumber" required data-validation-required-message="Please enter a valid tag number.">
+              <p class="help-block">Must be between 1000 and 3000</p>
             </div>
           </div>
 
@@ -132,10 +134,22 @@
               <label for="location">Location:</label>
               <select name="location" class="form-control" required data-validation-required-message="Please select the beach where you found the tag">
                 <option disabled>*Please select the beach where you found the tag</option>
-                <option>Beach 1</option>
-                <option>Beach 2</option>
-                <option>3</option>
-                <option>4</option>
+                <option>Naples Beach</option>
+                <option>Ellwood Beach</option>
+                <option>Isla Vista Beach</option>
+                <option>Goleta Beach</option>
+                <option>More Mesa Beach</option>
+                <option>West Hope Ranch Beach</option>
+                <option>East Hope Ranch Beach</option>
+                <option>Arroyo Burro Beach</option>
+                <option>West Mesa Beach</option>
+                <option>Mesa Lane Beach</option>
+                <option>East Mesa Beach</option>
+                <option>Ledbetter Beach</option>
+                <option>West Beach</option>
+                <option>East Beach</option>
+                <option>Miramar Beach</option>
+                <option>Summerland Beach</option>
               </select>
             </div>
           </div>
@@ -163,7 +177,7 @@
 
           <div class="control-group form-group">
             <div class="controls">
-              <input name="coordinates" class="form-control" id="coordinates" value="POINT(34.416 -119.845)" type="hidden"></input>
+              <input name="coordinates" class="form-control" id="coordinates" value="POINT(-119.845 34.416)" type="hidden"></input>
             </div>
           </div>
 
@@ -176,14 +190,13 @@
     </div>
     <!-- /.row -->
 
+    <hr>
 
+    <footer>
+      <p>&copy; UCSB ERI 2015</p>
+    </footer>
   </div>
-  <hr>
 
-  <footer>
-    <p>&copy; UCSB ERI 2015</p>
-  </footer>
-  </div>
   <!-- /container -->
 
 
