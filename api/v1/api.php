@@ -1,5 +1,5 @@
 <?php
-require_once 'API.class.php';
+require_once 'api.class.php';
 require __DIR__ . '/vendor/autoload.php';
 
 function wkt_to_json($wkt) {
@@ -39,14 +39,13 @@ class KelpAPI extends API
           if($args[0] == 1){
             // Load configuration as an array. Use the actual location of your configuration file
             $config = parse_ini_file('../../config.ini');
-
             // Try and connect to the database
             $username = $config['username'];
             $password = $config['password'];
             $dbname = $config['dbname'];
 
             try {
-                $conn = new PDO("mysql:host=127.0.0.1;dbname=$dbname", $username, $password);
+                $conn = new PDO("mysql:host=localhost;dbname=$dbname", $username, $password);
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -60,7 +59,7 @@ class KelpAPI extends API
 
                 foreach ($result as $row){
                   $properties = $row;
-                  # Remove wkt from properties
+                  // Remove wkt from properties
                   unset($properties['wkt']);
                   $feature = array(
                      'type' => 'Feature',
