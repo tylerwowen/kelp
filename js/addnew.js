@@ -32,6 +32,7 @@ var coordinates = {
 function inputPosition(position) {
   $("#coordinates").attr("value", 'POINT(' + position.coords.longitude +
     ' ' + position.coords.latitude + ')');
+    autoSelect(position);
 }
 
 function showError(error) {
@@ -73,6 +74,54 @@ $("#location").change(function() {
       ' ' + coor[0] + ')');
   }
 });
+
+// If coordinates are provided, automatically select a dropwodn entry
+function autoSelect(position){
+  var lang = position.coords.longitude;
+  if ( lang < -120.056483 
+    || lang > -119.57
+    || position.coords.latitude < 34.383503
+    || position.coords.latitude > 34.480348){
+    return;
+  }
+  if (lang < -119.924602){
+    $("#NaplesBeach").prop("selected",true);
+  }else if (lang < -119.87799){
+    $("#EllwoodBeach").prop("selected",true);
+  }else if (lang < -119.8468115){
+    $("#IslaVistaBeach").prop("selected",true);
+  }else if (lang < -119.809953){
+    $("#GoletaBeach").prop("selected",true);
+  }else if (lang < -119.7829265){
+    $("#MoreMesaBeach").prop("selected",true);
+  }else if (lang < -119.76624){
+    $("#WestHopeRanchBeach").prop("selected",true);
+  }else if (lang < -119.7494845){
+    $("#EastHopeRanchBeach").prop("selected",true);
+  }else if (lang < -119.7385675){
+    $("#ArroyoBurroBeach").prop("selected",true);
+  }else if (lang < -119.7315615){
+    $("#WestMesaBeach").prop("selected",true);
+  }else if (lang < -119.7213995){
+    $("#MesaLaneBeach").prop("selected",true);
+  }else if (lang < -119.7058775){
+    $("#EastMesaBeach").prop("selected",true);
+  }else if (lang < -119.696901){
+    $("#LedbetterBeach").prop("selected",true);
+  }else if (lang < -119.6862085){
+    $("#WestBeach").prop("selected",true);
+  }else if (lang < -119.662937){
+    $("#EastBeach").prop("selected",true);
+  }else if (lang < -119.6390635){
+    $("#Butterfly").prop("selected",true);
+  }else if (lang < -119.613467){
+    $("#MiramarBeach").prop("selected",true);
+  }else {
+    $("#SummerlandBeach").prop("selected",true);
+  }
+  // Warning that asks user to check the aumatically selected beach
+  $("#checkWarning").text("Please double check if the above beach name is correct.");
+}
 
 /* jqBootstrapValidation
  * A plugin for automating validation on Twitter Bootstrap formatted forms.
