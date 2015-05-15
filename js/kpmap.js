@@ -16,7 +16,7 @@ function initialize() {
 
   // Load a GeoJSON from project API.
   // Get all tags with the parameter "1"
-  map.data.loadGeoJson('https://kelp.ucsb.edu/api/v1/tags/1');
+  map.data.loadGeoJson('http://kelp.ucsb.edu/api/v1/tags/1');
 
   map.data.addListener('click', function(event) {
     //show an infowindow on mouseover

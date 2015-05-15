@@ -1,17 +1,41 @@
+// If fail to get user's coordinates, use default coor for the selected beach
+var useDefaultCoor = false;
+var coordinates = {
+  "Naples Beach": [34.435777, -119.955823],
+  "Ellwood Beach": [34.419907, -119.893381],
+  "Isla Vista Beach": [34.409267, -119.862599],
+  "Goleta Beach": [34.416531, -119.831024],
+  "More Mesa Beach": [34.417214, -119.788882],
+  "West Hope Ranch Beach": [34.413200, -119.776971],
+  "East Hope Ranch Beach": [34.405728, -119.755509],
+  "Arroyo Burro Beach": [34.402720, -119.743460],
+  "West Mesa Beach": [34.398113, -119.733675],
+  "Mesa Lane Beach": [34.396212, -119.729448],
+  "East Mesa Beach": [34.395674, -119.713351],
+  "Ledbetter Beach": [34.401563, -119.698404],
+  "West Beach": [34.402592, -119.695398],
+  "East Beach": [34.415179, -119.677019],
+  "Butterfly Beach": [34.417511, -119.648855],
+  "Miramar Beach": [34.419345, -119.629272],
+  "Summerland Beach": [34.419000, -119.597662]
+};
+
 (function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(inputPosition, showError);
   } else {
+    useDefaultCoor = true;
     console.log("Geolocation is not supported by this browser.");
   }
 })()
 
 function inputPosition(position) {
   $("#coordinates").attr("value", 'POINT(' + position.coords.longitude +
-    ' ' + position.coords.latitude + ')' );
+    ' ' + position.coords.latitude + ')');
 }
 
 function showError(error) {
+  useDefaultCoor = true;
   switch (error.code) {
     case error.PERMISSION_DENIED:
       console.warn("User denied the request for Geolocation.")
@@ -29,16 +53,25 @@ function showError(error) {
 }
 
 $('#datepicker input').datepicker({
-    format: "yyyy-mm-dd",
-    startDate: "2015-05-01",
-    endDate: "2016-05-01",
-    todayBtn: "linked",
-    autoclose: true,
-    todayHighlight: true
+  format: "yyyy-mm-dd",
+  startDate: "2015-05-01",
+  endDate: "2016-05-01",
+  todayBtn: "linked",
+  autoclose: true,
+  todayHighlight: true
 });
 
 $(function() {
   $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+});
+
+// A beach is selected, change the default coor correspondingly
+$("#location").change(function() {
+  if (useDefaultCoor) {
+    var coor = coordinates[$(this).val()];
+    $("#coordinates").attr("value", 'POINT(' + coor[1] +
+      ' ' + coor[0] + ')');
+  }
 });
 
 /* jqBootstrapValidation
@@ -516,7 +549,7 @@ $(function() {
                 }
               } else {
                 $controlGroup.removeClass("warning error success");
-                if ( value != null && value.length > 0) {
+                if (value != null && value.length > 0) {
                   $controlGroup.addClass("success");
                 }
                 $helpBlock.html($helpBlock.data("original-contents"));

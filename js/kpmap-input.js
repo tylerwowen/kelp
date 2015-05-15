@@ -2,7 +2,7 @@ var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 13,
+    zoom: 16,
     scrollwheel: false,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
@@ -41,7 +41,7 @@ function handleNoGeolocation(errorFlag) {
   var options = {
     map: map,
     zoom:10,
-    position: new google.maps.LatLng(34.42, -119.845),
+    position: new google.maps.LatLng(34.404139, -119.844305),
   };
 
   var infowindow = new google.maps.InfoWindow();
