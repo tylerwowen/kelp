@@ -37,18 +37,20 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">KELP</a>
+        <a class="navbar-brand" href="index.html">KELP</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <form name="signin" class="navbar-form navbar-right" action="#" method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <input name="username" type="text" placeholder="Email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <input name="password" type="password" placeholder="Password" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-success" value="Signin">Sign in</button>
-        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="addnew.html">New Tag</a>
+          </li>
+          <li>
+            <a href="press.html">Project Press</a>
+          </li>
+        </ul>
       </div>
       <!--/.navbar-collapse -->
     </div>
@@ -60,7 +62,7 @@
       <h1>NSF Kelp Study</h1>
 
       <p><a class="btn btn-primary btn-lg" href="addnew.html" role="button">Report a tag &raquo;</a>
-      <a class="btn btn-warning btn-lg" href="#about" role="button">About &raquo;</a></p>
+        <a class="btn btn-warning btn-lg" href="#about" role="button">About &raquo;</a></p>
       <div id="map-canvas"></div>
     </div>
   </div>
@@ -68,10 +70,23 @@
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-      <h2 id="about">About</h2>
-      <p>
-        Primary producers, such as plants and algae, form the basis of most food webs and their productivity and fate fundamentally shape ecosystems. Often, however, food and other resources are delivered to a food web from an outside source, providing a subsidy to the recipient ecosystem. Understanding these types of trophic connections and exchanges between ecosystems is necessary for predicting how food webs may respond to change, whether environmental or anthropogenic. Despite their potential importance, quantitative evaluations of cross-ecosystem material fluxes, variation of these fluxes in time and space, and ecological responses of recipient communities are lacking, particularly for marine ecosystems. By investigating links between a source ecosystem, kelp forests, and a recipient ecosystem, sandy beaches, this project will expand and transform our understanding of cross-ecosystem fluxes in the coastal ocean. Nearshore kelp forests are highly productive marine ecosystems characterized by large seasonal and interannual variations in net primary production (NPP).  More than 90% of kelp forest NPP is exported to adjacent ecosystems including the intertidal zone. Lacking attached plants and algae, sandy beach ecosystems near kelp forests depend heavily on imported drift kelp (wrack) to support complex and diverse food webs. Although sandy beaches are a dominant shoreline type along all U.S. coasts, provide habitat and prey for wildlife, including endangered species, and are highly valued by society as recreational and cultural resources that drive vibrant coastal economies, they receive little ecological study compared to other shoreline types. This lack of knowledge hinders the conservation and management of beaches as ecosystems. Perched on the narrow rim between land and sea, beaches are highly vulnerable to climate change, particularly sea level rise, and will be impacted by changes in climate, as will kelp forests. This project integrates biological and physical approaches to achieve an understanding of the fate and transport of exported kelp, and how variability in this resource subsidy shapes the community structure and function of recipient beach ecosystems.
-      </p>
+      <div class="col-md-8">
+        <h2 id="about">About</h2>
+        <p>
+          Primary producers, such as plants and algae, form the basis of most food webs and their productivity and fate fundamentally shape ecosystems. Often, however, food and other resources are delivered to a food web from an outside source, providing a subsidy
+          to the recipient ecosystem. Understanding these types of trophic connections and exchanges between ecosystems is necessary for predicting how food webs may respond to change, whether environmental or anthropogenic. Despite their potential importance,
+          quantitative evaluations of cross-ecosystem material fluxes, variation of these fluxes in time and space, and ecological responses of recipient communities are lacking, particularly for marine ecosystems. By investigating links between a source
+          ecosystem, kelp forests, and a recipient ecosystem, sandy beaches, this project will expand and transform our understanding of cross-ecosystem fluxes in the coastal ocean. Nearshore kelp forests are highly productive marine ecosystems characterized
+          by large seasonal and interannual variations in net primary production (NPP). More than 90% of kelp forest NPP is exported to adjacent ecosystems including the intertidal zone. Lacking attached plants and algae, sandy beach ecosystems near kelp
+          forests depend heavily on imported drift kelp (wrack) to support complex and diverse food webs. Although sandy beaches are a dominant shoreline type along all U.S. coasts, provide habitat and prey for wildlife, including endangered species,
+          and are highly valued by society as recreational and cultural resources that drive vibrant coastal economies, they receive little ecological study compared to other shoreline types. This lack of knowledge hinders the conservation and management
+          of beaches as ecosystems. Perched on the narrow rim between land and sea, beaches are highly vulnerable to climate change, particularly sea level rise, and will be impacted by changes in climate, as will kelp forests. This project integrates
+          biological and physical approaches to achieve an understanding of the fate and transport of exported kelp, and how variability in this resource subsidy shapes the community structure and function of recipient beach ecosystems.
+        </p>
+      </div>
+      <div class="col-md-4 col-sm-8">
+        <img id="kelp-card" src="img/kelp_card_final.jpg" alt="Kelp Card Image">
+      </div>
       <!-- <h1>Recent entries</h1>
       <div class="col-md-4">
         <h2>Heading</h2>

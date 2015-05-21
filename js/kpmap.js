@@ -9,6 +9,7 @@ function initialize() {
     },
     zoom: 11,
     scrollwheel: false,
+    streetViewControl:false,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
