@@ -22,18 +22,12 @@ var coordinates = {
 
 (function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(inputPosition, showError);
+    navigator.geolocation.getCurrentPosition(processPosition, showError);
   } else {
     useDefaultCoor = true;
     console.log("Geolocation is not supported by this browser.");
   }
 })()
-
-function inputPosition(position) {
-  $("#coordinates").attr("value", 'POINT(' + position.coords.longitude +
-    ' ' + position.coords.latitude + ')');
-  autoSelect(position);
-}
 
 function showError(error) {
   useDefaultCoor = true;
@@ -62,32 +56,48 @@ $('#datepicker input').datepicker({
   todayHighlight: true
 });
 
+// Validation
 $(function() {
   $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 });
 
-// A beach is selected, change the default coor correspondingly
+// When a beach is selected, change the default coordinates correspondingly
 $("#location").change(function() {
   if ($("#otherbeach").prop('selected')) {
-      $("#notes").prop("required",true);
-      return;
-  }
-  else {
-    $("#notes").prop("required",false);
+    $("#notes").prop("required", true);
+    return;
+  } else {
+    $("#notes").prop("required", false);
   }
   if (useDefaultCoor) {
-    var coor = coordinates[$(this).val()];
+    var coor = randCoor(coordinates[$(this).val()]);
     $("#coordinates").attr("value", 'POINT(' + coor[1] +
       ' ' + coor[0] + ')');
   }
 });
 
+
+// Save coordinates when available
+function processPosition(position) {
+  // validate
+  var polyline = decodePath("clgqEhlj{UsEsVrs@coBne@i_AvHqk@wD}_AZ}`AvWukAvz@_~A`NucAhmA{nAgHsOcBkcBbYg{Awv@yYkO{h@iD_bA_GucDdMwkAbgAybEvv@sqD{CquBojBm{BgXc~EjKmgA{Rsl@h@g~@}NqNjO_zC|a@mdBcM_pAxsB_wDnhAuhEMor@~YsbAjj@e_@cMwg@bIaiAtqBomB",
+    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+
+  // If not on the coast, use defaul location
+  var goPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  if (!google.maps.geometry.poly.isLocationOnEdge(goPosition, polyline, 2e-3)) {
+    return;
+  }
+
+  $("#coordinates").attr("value", 'POINT(' + position.coords.longitude +
+    ' ' + position.coords.latitude + ')');
+  autoSelect(position);
+}
+
 // If coordinates are provided, automatically select a dropwodn entry
 function autoSelect(position) {
   var lang = position.coords.longitude;
-  if (lang < -120.056483 || lang > -119.57 || position.coords.latitude < 34.383503 || position.coords.latitude > 34.480348) {
-    return;
-  }
+
   if (lang < -119.924602) {
     $("#NaplesBeach").prop("selected", true);
   } else if (lang < -119.87799) {
@@ -125,6 +135,58 @@ function autoSelect(position) {
   }
   // Warning that asks user to check the aumatically selected beach
   $("#checkWarning").text("Please double check if the above beach name is correct.");
+}
+
+
+// Decode an encoded levels string into an array of levels.
+function decodeLevels(encodedLevelsString) {
+  var decodedLevels = [];
+
+  for (var i = 0; i < encodedLevelsString.length; ++i) {
+    var level = encodedLevelsString.charCodeAt(i) - 63;
+    decodedLevels.push(level);
+  }
+
+  return decodedLevels;
+}
+
+// Decode the supplied encoded polyline and levels.
+function decodePath(encodedPolyline, encodedLevels) {
+
+  if (encodedPolyline.length == 0) {
+    return;
+  }
+
+  var decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
+  var decodedLevels = decodeLevels(encodedLevels);
+
+  if (decodedPath.length == 0) {
+    return;
+  }
+
+  if (decodedPath.length != decodedLevels.length) {
+    alert('Point count and level count do not match');
+    return;
+  }
+
+  var polypath = [];
+  for (var i = 0; i < decodedPath.length; ++i) {
+    polypath.push(new google.maps.LatLng(decodedPath[i].lat().toFixed(5),
+      decodedPath[i].lng().toFixed(5)));
+  }
+
+  return new google.maps.Polyline({
+    clickable: false,
+    path: polypath
+  });
+}
+
+// Random coordinates near a central point
+function randCoor(coors) {
+  return [
+    coors[0] + (Math.random() - 0.5) / 1000, // latitude
+    coors[1] + (Math.random() - 0.5) / 100 // longtitude
+  ];
 }
 
 /* jqBootstrapValidation
