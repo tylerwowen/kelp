@@ -186,7 +186,7 @@ function decodePath(encodedPolyline, encodedLevels) {
 function randCoor(coors) {
   return [
     coors[0] + (Math.random() - 0.5) / 2000, // latitude
-    coors[1] + (Math.random() - 0.5) / 500 // longtitude
+    coors[1] + (Math.random() - 0.5) / 200 // longtitude
   ];
 }
 
