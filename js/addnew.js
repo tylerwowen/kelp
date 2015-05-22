@@ -86,6 +86,7 @@ function processPosition(position) {
   // If not on the coast, use defaul location
   var goPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   if (!google.maps.geometry.poly.isLocationOnEdge(goPosition, polyline, 2e-3)) {
+    useDefaultCoor = true;
     return;
   }
 
@@ -184,8 +185,8 @@ function decodePath(encodedPolyline, encodedLevels) {
 // Random coordinates near a central point
 function randCoor(coors) {
   return [
-    coors[0] + (Math.random() - 0.5) / 1000, // latitude
-    coors[1] + (Math.random() - 0.5) / 100 // longtitude
+    coors[0] + (Math.random() - 0.5) / 2000, // latitude
+    coors[1] + (Math.random() - 0.5) / 500 // longtitude
   ];
 }
 
