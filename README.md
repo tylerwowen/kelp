@@ -51,7 +51,8 @@ This page shows two articles about the project with links to their original post
 
 ## API
 Kelp has a publicly accessible RESTful API which provides real-time access to reported tags data in the form of GeoJson.  
-Relative files:
+
+#### Relative files:
 - /api/v1/api.class.php
 - /api/v1/api.php
 
