@@ -10,7 +10,7 @@ Kelp is a web application built for NSF Kelp Study. It involves the following te
 ## Website
 
 ### Home
-File: /index.html
+File: /index.html  
 Home is the front page of Kelp. It introduces the project and presents reported tags in a map based on Google Maps JacaScript API. It has the following elements.
 - Navigation Bar
 - ERI logo
@@ -46,11 +46,11 @@ Relative files:
 - When an user selects a beach manually, Kelp uses the default coorinates slightly adjusted with randomly generated numbers in order to prevent overlapped markers on the map.
 
 ### Press
-/press.html
+/press.html  
 This page shows two articles about the project with links to their original posts.
 
 ## API
-Kelp has a publicly accessible RESTful API which provides real-time access to reported tags data in the form of GeoJson.
+Kelp has a publicly accessible RESTful API which provides real-time access to reported tags data in the form of GeoJson.  
 Relative files:
 - /api/v1/api.class.php
 - /api/v1/api.php
