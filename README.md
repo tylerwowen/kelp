@@ -11,7 +11,7 @@ Kelp is a web application built for NSF Kelp Study. It involves the following te
 
 ### Home
 File: /index.html  
-Home is the front page of Kelp. It introduces the project and presents reported tags in a map based on Google Maps JacaScript API. It has the following elements.
+Home is the front page of Kelp. It introduces the project and presents reported tags on a map based on Google Maps JacaScript API V3. It has the following elements.
 - Navigation Bar
 - ERI logo
 - Tag Map shows the locations where tags were reported. When a marker is clicked, details( including Date, Tag Number, Location and Coordinates) will be presented.
