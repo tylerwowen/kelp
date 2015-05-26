@@ -190,6 +190,16 @@ function randCoor(coors) {
   ];
 }
 
+function validateForm() {
+  if ($("#tagnumber").val() < 1000 || $("#tagnumber").val() > 3000){
+    $("#tagWarning").text("Please enter a valid tag number.");
+    return false;
+  }
+  if ($("#inval").prop('selected')){
+    return false;
+  }
+}
+
 /* jqBootstrapValidation
  * A plugin for automating validation on Twitter Bootstrap formatted forms.
  *
@@ -310,7 +320,7 @@ function randCoor(coors) {
             // ---------------------------------------------------------
             if ($this.attr("max") !== undefined || $this.attr("aria-valuemax") !== undefined) {
               var max = ($this.attr("max") !== undefined ? $this.attr("max") : $this.attr("aria-valuemax"));
-              message = "Too high: Maximum of '" + max + "'<!-- data-validation-max-message to override -->";
+              message = "Please input a valid tagnumber.<!-- data-validation-max-message to override -->";
               if ($this.data("validationMaxMessage")) {
                 message = $this.data("validationMaxMessage");
               }
@@ -322,7 +332,7 @@ function randCoor(coors) {
             // ---------------------------------------------------------
             if ($this.attr("min") !== undefined || $this.attr("aria-valuemin") !== undefined) {
               var min = ($this.attr("min") !== undefined ? $this.attr("min") : $this.attr("aria-valuemin"));
-              message = "Too low: Minimum of '" + min + "'<!-- data-validation-min-message to override -->";
+              message = "Please input a valid tagnumber. <!-- data-validation-min-message to override -->";
               if ($this.data("validationMinMessage")) {
                 message = $this.data("validationMinMessage");
               }

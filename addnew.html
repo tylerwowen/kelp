@@ -120,13 +120,13 @@
     <div class="row">
       <div class="col-md-8">
         <h3>Details</h3>
-        <form name="reportTag" id="tagInfoDorm" action="processdata.php" method="post">
+        <form name="reportTag" id="tagInfoDorm" action="processdata.php" onsubmit="return validateForm()" method="post">
 
           <div class="control-group form-group">
             <div class="controls">
               <label>Tag number:</label>
-              <input name="tagnumber" type="number" min="1000" max="3000" class="form-control" id="tagnumber" required data-validation-required-message="Please enter a valid tag number.">
-              <p class="help-block">Must be between 1000 and 3000</p>
+              <input name="tagnumber" type="number" class="form-control" id="tagnumber" required data-validation-required-message="Please enter a valid tag number.">
+              <p class="help-block" id="tagWarning"></p>
             </div>
           </div>
 
@@ -134,7 +134,7 @@
             <div class="controls">
               <label for="location">Location:</label>
               <select name="location" class="form-control" id="location" required data-validation-required-message="Please select the beach where you found the tag">
-                <option disabled>*Please select the beach where you found the tag</option>
+                <option disabled id="inval">*Please select the beach where you found the tag</option>
                 <option id="NaplesBeach">Naples Beach</option>
                 <option id="EllwoodBeach">Ellwood Beach</option>
                 <option id="IslaVistaBeach">Isla Vista Beach</option>
