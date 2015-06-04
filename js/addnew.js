@@ -49,8 +49,8 @@ function showError(error) {
 
 $('#datepicker input').datepicker({
   format: "yyyy-mm-dd",
-  startDate: "2015-05-01",
-  endDate: "2016-05-01",
+  startDate: "2015-06-01",
+  endDate: "2019-05-01",
   todayBtn: "linked",
   autoclose: true,
   todayHighlight: true
